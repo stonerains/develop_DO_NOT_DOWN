@@ -162,7 +162,7 @@ static void ui_draw_sidebar_connectivity(UIState *s) {
   static std::map<NetStatus, std::pair<const char *, int>> connectivity_map = {
     {NET_ERROR, {"네트워크\n에러", 2}},
     {NET_CONNECTED, {"네트워크\n연결됨", 0}},
-    {NET_DISCONNECTED, {"네트워크\n", 1}},
+    {NET_DISCONNECTED, {"네트워크\n연결안됨", 1}},
   };
   auto net_params = connectivity_map[s->scene.athenaStatus];
   ui_draw_sidebar_metric(s, NULL, NULL, net_params.second, 180+158, net_params.first);
