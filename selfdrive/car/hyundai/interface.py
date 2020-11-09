@@ -137,9 +137,9 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.16], [0.01]]
     elif candidate == CAR.GENESIS_G90:
-      ret.mass = 2200
-      ret.wheelbase = 3.15
-      ret.steerRatio = 12.069
+      ret.mass = 2290
+      ret.wheelbase = 3.45
+      ret.steerRatio = 13.8
       ret.lateralTuning.pid.kiBP, ret.lateralTuning.pid.kpBP = [[0.], [0.]]
       ret.lateralTuning.pid.kpV, ret.lateralTuning.pid.kiV = [[0.16], [0.01]]
     elif candidate in [CAR.KIA_OPTIMA, CAR.KIA_OPTIMA_H]:
@@ -212,14 +212,14 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.indi.actuatorEffectiveness = 1.5
     elif ATOMC.tun_type == 'lqr':
       ret.lateralTuning.init('lqr')
-      ret.lateralTuning.lqr.scale = 2000.0
+      ret.lateralTuning.lqr.scale = 1680.0
       ret.lateralTuning.lqr.ki = 0.01
       ret.lateralTuning.lqr.a = [0., 1., -0.22619643, 1.21822268]
       ret.lateralTuning.lqr.b = [-1.92006585e-04, 3.95603032e-05]
       ret.lateralTuning.lqr.c = [1., 0.]
-      ret.lateralTuning.lqr.k = [-100., 450.]
-      ret.lateralTuning.lqr.l = [0.22, 0.318]
-      ret.lateralTuning.lqr.dcGain = 0.003
+      ret.lateralTuning.lqr.k = [-110.73572306, 451.22718255]
+      ret.lateralTuning.lqr.l = [0.3233671, 0.3185757]
+      ret.lateralTuning.lqr.dcGain = 0.002858
 
 
     ret.atomTuning.cvKPH    = ATOMC.cv_KPH
@@ -301,8 +301,8 @@ class CarInterface(CarInterfaceBase):
     CP.lateralsRatom.opkrAutoResume = ATOMC.ap_autoReasume
     CP.lateralsRatom.opkrAutoScreenOff = ATOMC.ap_autoScnOffTime
 
-    CP.steerRateCost = ATOMC.steerRateCost
-    CP.steerLimitTimer = ATOMC.steerLimitTimer
+    CP.steerRateCost = 0.555 #ATOMC.steerRateCost
+    CP.steerLimitTimer = 2.5 #ATOMC.steerLimitTimer
     
     return CP
 
