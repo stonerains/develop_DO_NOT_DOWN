@@ -123,6 +123,7 @@ struct CarEvent @0x9b1657f34caf3ad3 {
     modeChangeDistance @97;
     modeChangeOneway @98;
     needBrake @99;
+    
   }
 }
 
