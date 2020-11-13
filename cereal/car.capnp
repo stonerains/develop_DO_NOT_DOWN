@@ -372,6 +372,37 @@ struct CarControl {
       chimeModeOneway @20;
     }
   }
+struct audibleAlert {    
+    audibleAlert @0: AudibleAlert;
+
+    }
+
+    enum AudibleAlert {
+      # these are the choices from the Honda
+      # map as good as you can for your car
+      none @0;
+      chimeEngage @1;
+      chimeDisengage @2;
+      chimeError @3;
+      chimeWarning1 @4;
+      chimeWarning2 @5;
+      chimeWarningRepeat @6;
+      chimePrompt @7;
+      chimeWarning2Repeat @8;
+      chimeReady @9;
+      chimeDoorOpen @10;
+      chimeGearDrive @11;
+      chimeLaneChange @12;
+      chimeLaneDeparture @13;
+      chimeRoadWarning @14;
+      chimeSeatBelt @15;
+      chimeViewUncertain @16;
+      chimeModeOpenpilot @17;
+      chimeModeDistcurv @18;
+      chimeModeDistance @19;
+      chimeModeOneway @20;
+    }
+  }
 }
 
 # ****** car param ******
