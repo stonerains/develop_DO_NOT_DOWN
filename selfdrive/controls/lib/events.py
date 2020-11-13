@@ -484,6 +484,15 @@ EVENTS: Dict[int, Dict[str, Union[Alert, Callable[[Any, messaging.SubMaster, boo
       AlertStatus.userPrompt, AlertSize.mid,
       Priority.LOW, VisualAlert.none, AudibleAlert.none, .0, .1, .1, alert_rate=0.75),
   },
+  
+  EventName.lkasButtonOff: {
+    ET.WARNING: Alert(
+      "차량의 LKAS버튼을 확인해주세요",
+      "",
+      "",
+      AlertStatus.userPrompt, AlertSize.small,
+      Priority.LOW, VisualAlert.none, AudibleAlert.none, 0., 0., .1),
+  },
 
   EventName.driverSteering: {
     ET.WARNING: Alert(
