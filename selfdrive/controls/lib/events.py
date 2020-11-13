@@ -10,7 +10,7 @@ from selfdrive.locationd.calibrationd import MIN_SPEED_FILTER
 AlertSize = log.ControlsState.AlertSize
 AlertStatus = log.ControlsState.AlertStatus
 VisualAlert = car.CarControl.HUDControl.VisualAlert
-AudibleAlert = car.CarControl.HUDControl.AudibleAlert
+AudibleAlert = car.AudibleAlert
 EventName = car.CarEvent.EventName
 
 # Alert priorities
