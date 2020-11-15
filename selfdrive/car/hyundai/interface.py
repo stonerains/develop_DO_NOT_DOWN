@@ -243,7 +243,7 @@ class CarInterface(CarInterfaceBase):
       elif but == Buttons.GAP_DIST:
         be.type = ButtonType.gapAdjustCruise
   #    elif but == Buttons.CANCEL:
-  #+      be.type = ButtonType.cancel
+  #      be.type = ButtonType.cancel
       else:
         be.type = ButtonType.unknown
       buttonEvents.append(be)
@@ -264,8 +264,8 @@ class CarInterface(CarInterfaceBase):
       events.add(EventName.belowSteerSpeed)
     if self.CC.turning_indicator_alert:
       events.add(EventName.turningIndicatorOn)
-    if self.CS.lkas_button_on != self.CS.prev_lkas_button:
-      events.add(EventName.buttonCancel)
+  #  if self.CS.lkas_button_on != self.CS.prev_lkas_button:
+  #    events.add(EventName.buttonCancel)
     if self.mad_mode_enabled and not self.CC.longcontrol and EventName.pedalPressed in events.events:
       events.events.remove(EventName.pedalPressed)
 
