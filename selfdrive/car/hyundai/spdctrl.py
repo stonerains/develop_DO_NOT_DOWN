@@ -32,10 +32,10 @@ class Spdctrl(SpdController):
             vRel = vRele
         elif 1 < CS.lead_distance < 149:
             dRel = CS.lead_distance # CS.lead_distance(레이더 차간간격)값 사용
-            vRel = CS.lead_objspd
+            vRel = CS.lead_objspd   # 선행차량 상대속도
 
 
-        dst_lead_distance = (CS.clu_Vanz*self.cv_Raio)   # 기준 유지 거리
+        dst_lead_distance = (CS.clu_Vanz*self.cv_Raio)   # 기준 유지 거리                * 상수 0.4
         
         if dst_lead_distance > 100:
             dst_lead_distance = 100
