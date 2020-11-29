@@ -122,7 +122,7 @@ class Spdctrl(SpdController):
                 self.seq_step_debug = "SS>VS,거리유지"
         elif lead_objspd >= 0 and CS.clu_Vanz >= (int(CS.VSetDis) - 9) and int(CS.clu_Vanz * 0.5) < dRel < 149:
             self.seq_step_debug = "일반가속,+3"
-            lead_wait_cmd, lead_set_speed = self.get_tm_speed( CS, 60, 3)
+            lead_wait_cmd, lead_set_speed = self.get_tm_speed( CS, 60, 4)
         elif lead_objspd < 0 and int(CS.clu_Vanz * 0.5) >= dRel > 1:
             self.seq_step_debug = "일반감속,-1"
             lead_wait_cmd, lead_set_speed = self.get_tm_speed( CS, 80, -1)
