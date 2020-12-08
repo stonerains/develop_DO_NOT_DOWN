@@ -153,8 +153,8 @@ class CarInterface(CarInterfaceBase):
 
     ###################################################
     # scc smoother
-    ret.longitudinalTuning.kpBP = [0., 10. * CV.KPH_TO_MS, 30. * CV.KPH_TO_MS, 40. * CV.KPH_TO_MS, 130. * CV.KPH_TO_MS]
-    ret.longitudinalTuning.kpV = [1.4, 1.3, 1.3, 1.0, 0.4]
+    ret.longitudinalTuning.kpBP = [0., 10. * CV.KPH_TO_MS, 40. * CV.KPH_TO_MS, 130. * CV.KPH_TO_MS]
+    ret.longitudinalTuning.kpV = [1.4, 1.3, 1.0, 0.4]
     ret.longitudinalTuning.kiBP = [0.]
     ret.longitudinalTuning.kiV = [0.]
     ret.longitudinalTuning.deadzoneBP = [0., 40]
