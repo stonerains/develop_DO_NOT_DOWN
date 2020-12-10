@@ -253,7 +253,7 @@ class SccSmoother:
         override_acc = acc
         accel = (op_accel + acc) / 2.
       else:        
-        accel = op_accel * interp(clu11_speed, [0., 20., 35., 50., 51., 60., 100.], [2.4, 3.2, 3.0, 1.7, 1.65, 1.4, 1.0])
+        accel = op_accel * interp(clu11_speed, [0., 20., 35., 50., 51., 60., 100.], [2.4, 3.25, 3.0, 1.7, 1.65, 1.4, 1.0])
 #        if 35 > lead.dRel > 15:
 #          if clu11_speed < 50:
 #            accel = op_accel * 2.5               
