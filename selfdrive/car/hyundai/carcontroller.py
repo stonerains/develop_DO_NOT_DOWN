@@ -333,12 +333,12 @@ class CarController():
 
     str_log1 = 'CV={:5.1f}/{:5.3f} torg:{:5.0f}'.format(  self.model_speed, self.model_sum, apply_steer )
     str_log2 = 'limit={:.0f} tm={:.1f} '.format( apply_steer_limit, self.timer1.sampleTime()  )
-    trace1.printf( '{} {}'.format( str_log1, str_log2 ) )
+#    trace1.printf( '{} {}'.format( str_log1, str_log2 ) )
 
     run_speed_ctrl = self.param_OpkrAccelProfile and CS.acc_active and self.SC != None
     if not run_speed_ctrl:
       str_log2 = 'U={:.0f}  LK={:.0f} dir={} steer={:5.0f} '.format( CS.Mdps_ToiUnavail, CS.lkas_button_on, self.steer_torque_ratio_dir, CS.out.steeringTorque  )
-      trace1.printf2( '{}'.format( str_log2 ) )
+#      trace1.printf2( '{}'.format( str_log2 ) )
 
     if pcm_cancel_cmd and self.CP.longcontrolEnabled:
       can_sends.append(create_clu11(self.packer, frame, CS.clu11, Buttons.CANCEL))
