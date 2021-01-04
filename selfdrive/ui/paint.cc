@@ -1017,7 +1017,7 @@ static void ui_draw_debug(UIState *s)
   NVGcolor nColor = COLOR_WHITE;
   x_pos = viz_speed_x + 320;
   y_pos = 120;
-
+/*
   nvgFontSize(s->vg, 30);
   switch( scene.params.nOpkrAccelProfile  )
   {
@@ -1028,8 +1028,8 @@ static void ui_draw_debug(UIState *s)
   }
   nvgFillColor(s->vg, nColor);
   ui_print( s, x_pos+50, y_pos+0, "%s", str_msg );
-
-  nvgFontSize(s->vg, 80);
+*/
+  nvgFontSize(s->vg, 40);
   switch( scene.cruiseState.modeSel  )
   {
     case 0: strcpy( str_msg, "0.오파모드" ); nColor = COLOR_WHITE; break;
