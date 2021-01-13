@@ -807,6 +807,10 @@ struct PathPlan {
   laneChangeState @18 :LaneChangeState;
   laneChangeDirection @19 :LaneChangeDirection;
   laneChangeBSM @20 :LaneChangeBSM;
+  
+  steerRatio @22 :Float32;
+  steerRateCost @23 :Float32;
+  steerActuatorDelay @24 :Float32;
 
   enum Desire {
     none @0;
