@@ -1,6 +1,9 @@
 import os
 import math
+from common.numpy_fast import interp
 from common.realtime import sec_since_boot, DT_MDL
+from selfdrive.car.hyundai.values import CAR
+from selfdrive.ntune import ntune_get, ntune_isEnabled
 from selfdrive.swaglog import cloudlog
 from selfdrive.controls.lib.lateral_mpc import libmpc_py
 from selfdrive.controls.lib.drive_helpers import MPC_COST_LAT
@@ -52,7 +55,8 @@ class PathPlanner():
     self.LP = LanePlanner()
 
     self.last_cloudlog_t = 0
-    self.steer_rate_cost = CP.steerRateCost
+    #self.steer_rate_cost = CP.steerRateCost
+    self.steer_rate_cost_prev = ntune_get('steerRateCost')
 
     self.setup_mpc()
     self.solution_invalid_cnt = 0
@@ -91,10 +95,24 @@ class PathPlanner():
 
     lca_left = sm['carState'].leftBlindspot
     lca_right = sm['carState'].rightBlindspot
+	
+	steerRateCost = ntune_get('steerRateCost')
+
+    if self.steer_rate_cost_prev != steerRateCost:
+      self.steer_rate_cost_prev = steerRateCost
+
+      self.libmpc.init(MPC_COST_LAT.PATH, MPC_COST_LAT.LANE, MPC_COST_LAT.HEADING, steerRateCost)
+      self.cur_state[0].delta = math.radians(angle_steers - angle_offset) / VM.sR
 
     # Run MPC
     self.angle_steers_des_prev = self.angle_steers_des_mpc
-    VM.update_params(sm['liveParameters'].stiffnessFactor, sm['liveParameters'].steerRatio)
+    #VM.update_params(sm['liveParameters'].stiffnessFactor, sm['liveParameters'].steerRatio)
+    if ntune_isEnabled('useLiveSteerRatio'):
+      sr = max(sm['liveParameters'].steerRatio, 0.1)
+    else:
+      sr = max(ntune_get('steerRatio'), 0.1)
+
+    VM.update_params(x, sr)
 
     curvature_factor = VM.curvature_factor(v_ego)
 

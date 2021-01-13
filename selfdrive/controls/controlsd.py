@@ -25,6 +25,7 @@ from selfdrive.controls.lib.alertmanager import AlertManager
 from selfdrive.controls.lib.vehicle_model import VehicleModel
 from selfdrive.controls.lib.planner import LON_MPC_STEP
 from selfdrive.locationd.calibration_helpers import Calibration, Filter
+from selfdrive.ntune import ntune_get
 
 LANE_DEPARTURE_THRESHOLD = 0.1
 STEER_ANGLE_SATURATION_TIMEOUT = 1.0 / DT_CTRL
@@ -343,8 +344,10 @@ def data_send(sm, pm, CS, CI, CP, VM, state, events, actuators, v_cruise_kph, rk
     l_lane_change_prob = md.meta.desirePrediction[log.PathPlan.Desire.laneChangeLeft - 1]
     r_lane_change_prob = md.meta.desirePrediction[log.PathPlan.Desire.laneChangeRight - 1]
 
-    l_lane_close = left_lane_visible and (sm['pathPlan'].lPoly[3] < (1.08 - CAMERA_OFFSET))
-    r_lane_close = right_lane_visible and (sm['pathPlan'].rPoly[3] > -(1.08 + CAMERA_OFFSET))
+      cameraOffset = ntune_get("cameraOffset")
+
+      l_lane_close = left_lane_visible and (self.sm['pathPlan'].lPoly[3] < (1.08 - cameraOffset))
+      r_lane_close = right_lane_visible and (self.sm['pathPlan'].rPoly[3] > -(1.08 + cameraOffset))
 
     if ldw_allowed:
       CC.hudControl.leftLaneDepart = bool(l_lane_change_prob > LANE_DEPARTURE_THRESHOLD and l_lane_close)
